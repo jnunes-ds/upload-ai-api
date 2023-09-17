@@ -1,5 +1,5 @@
 import { fastify } from "fastify";
-import { prisma } from "./lib/prisma";
+import { fastifyCors } from "@fastify/cors";
 import { getAllPromptsRoute } from "./routes/get-all-prompts.routes";
 import { uploadVideoRoute } from "./routes/upload-video.routes";
 import { createTranscriptionRoute } from "./routes/create-transcription.routes";
@@ -8,6 +8,10 @@ import { generateAICompletionRoute } from "./routes/generate-ai-completion.route
 const PORT = 3333;
 
 const app = fastify();
+
+app.register(fastifyCors, {
+  origin: "*",
+});
 
 app.register(getAllPromptsRoute);
 app.register(uploadVideoRoute);
