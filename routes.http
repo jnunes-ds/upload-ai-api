@@ -19,9 +19,21 @@ Content-Type: audio/mpeg
 ###
 
 # @name create-transcription
-POST http://localhost:3333/videos/6846b489-ebc4-4e0d-ab19-f60b8b20f890/transcription
+POST http://localhost:3333/videos/652644ba-7b8f-4220-94a3-48f5669368a9/transcription
 Content-type: application/json
 
 {
-    "prompt": "pink floyd, music"
+    "prompt": "planeta terra"
+}
+
+###
+
+# @name generate-ai-completion
+POST http://localhost:3333/ai/complete
+Content-type: application/json
+
+{
+    "videoId": "652644ba-7b8f-4220-94a3-48f5669368a9",
+    "temperature": 0.5,
+    "template": "Gere um resumo sucinto da transcrição do vídeo informada a seguir: ```{transcription}```"
 }
